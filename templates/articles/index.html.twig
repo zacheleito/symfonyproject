@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}Zache Articles{% endblock %}
+{% block body %}
+{% if articles %}
+<table class="table table-striped">
+<thead> 
+<tr>
+<th>Article Title</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+    {% for article in articles %}
+    <br>
+<tr>
+
+<td>{{ article.title }}</td> 
+<td><a href="/article/{{article.id}}" class="btn btn-outline-dark">Display</a>
+    <a href="/article/edit/{{ article.id }}" class="btn btn-light">Edit</a>
+    <a href="#" class="btn btn-danger delete-article" data-id="{{ article.id }}">Delete</a>
+    </td>
+</tr>
+    {% endfor %}
+</tbody>
+</table>
+{% else %}
+<p>No Articles to be displayed </p>
+{% endif %}
+{% endblock %}
+
+{% block javascripts %}
+<script src="/js/main.js"></script>
+{% endblock %}
